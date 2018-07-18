@@ -25,7 +25,7 @@ CMD1=($($GLOBALPATH/bin/cleos.sh create key))
 PRIV_KEY=${CMD1[2]}
 PUB_KEY=${CMD1[5]}
 
-CMD=$($GLOBALPATH/bin/cleos.sh wallet import -n $NAME $PRIV_KEY 2>$tpm_stderr)
+CMD=$($GLOBALPATH/bin/cleos.sh wallet import -n $NAME --private-key $PRIV_KEY 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

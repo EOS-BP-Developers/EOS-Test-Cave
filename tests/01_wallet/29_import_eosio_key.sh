@@ -8,7 +8,7 @@ KEY="$( jq -r '.eosio_key' "$config" )"
 
 #-------------------------------------------------------
 
-CMD=$($GLOBALPATH/bin/cleos.sh wallet import $KEY 2>$tpm_stderr)
+CMD=$($GLOBALPATH/bin/cleos.sh wallet import --private-key $KEY 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 
