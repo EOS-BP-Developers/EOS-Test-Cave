@@ -21,7 +21,7 @@ for NAME in "${accounts[@]}"; do
       echo $WALLET_PASS > "$GLOBALPATH/log/wallet_name_"$NAME"_password.dat"
   fi
 
-  CMD=$( $GLOBALPATH/bin/cleos.sh wallet import -n $NAME $PRIV_KEY 2> $tpm_stderr )
+  CMD=$( $GLOBALPATH/bin/cleos.sh wallet import -n $NAME --private-key $PRIV_KEY 2> $tpm_stderr )
   ERR=$(cat $tpm_stderr)
   CHK_KEY=$(echo $CMD | awk '{print $5}')
   if [[ $ERR != "" ]]; then
