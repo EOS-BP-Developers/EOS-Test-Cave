@@ -9,7 +9,7 @@ PUB_KEY=$( cat $GLOBALPATH/log/wallet_name_testwallet_key.dat | cut -d' ' -f1)
 PRIV_KEY=$( cat $GLOBALPATH/log/wallet_name_testwallet_key.dat | cut -d' ' -f2)
 
 for NAME in "${accounts[@]}"; do
-  # Check Wallet 
+  # Check Wallet
   CMD=$( $GLOBALPATH/bin/cleos.sh wallet create -n $NAME 2> $tpm_stderr )
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != "" ]]; then
@@ -35,4 +35,4 @@ for NAME in "${accounts[@]}"; do
       exit 1
   fi
 done
-echo "1:$TEST_NAME"
+echo "1:$TEST_NAME" && sleep 2

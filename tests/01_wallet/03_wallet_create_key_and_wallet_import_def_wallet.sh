@@ -19,7 +19,7 @@ TEST_NAME="Create and import EOS Key"
 
 #--------------------------------------------------
 CMD1=($($GLOBALPATH/bin/cleos.sh create key))
-PRIV_KEY=${CMD1[2]} 
+PRIV_KEY=${CMD1[2]}
 PUB_KEY=${CMD1[5]}
 
 CMD=$($GLOBALPATH/bin/cleos.sh wallet import --private-key $PRIV_KEY 2>$tpm_stderr)
@@ -34,7 +34,7 @@ else
 
     if [[ "${RES_PUB_KEY[4]}" == "$PUB_KEY" ]]; then
 	echo "$PUB_KEY $PRIV_KEY" >> $GLOBALPATH/log/wallet_default_key.dat
-	echo "1:$TEST_NAME"
+	echo "1:$TEST_NAME" && sleep 2
     else
 	failed "Created Pub Key ($PUB_KEY) != Imported (${RES_PUB_KEY[4]})"
     fi

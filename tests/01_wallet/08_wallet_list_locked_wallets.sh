@@ -32,7 +32,7 @@ else
 
     if [[ "$CMD" == *"\"default\""*  && "$CMD" != *"\"default *\""* && "$CMD" == *"\"$NAME\""*  && "$CMD" != *"\"$NAME *\""* ]]; then
 
-        echo "1:$TEST_NAME"
+        echo "1:$TEST_NAME" && sleep 2
     else
         failed "Some wallets listed as unlocked or not in list.";
     fi

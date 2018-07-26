@@ -23,4 +23,4 @@ do
     CMD=$($GLOBALPATH/bin/cleos.sh push action eosio updateauth '{"account": "'$account'", "permission": "active",  "parent": "owner",  "auth": { "threshold": 1, "keys": [], "waits": [], "accounts": [{ "weight": 1, "permission": {"actor": "'$controller'", "permission": "active"} }] } }' -p $account@active 2>$tpm_stderr)
 done
 
-echo "1:$TEST_NAME"
+echo "1:$TEST_NAME" && sleep 2

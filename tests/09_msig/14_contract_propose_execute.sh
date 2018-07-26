@@ -33,4 +33,4 @@ elif [[ $CMD == $cur_code_hash ]]; then
   exit 1;
 fi
 
-echo "1:$TEST_NAME"
+echo "1:$TEST_NAME" && sleep 2

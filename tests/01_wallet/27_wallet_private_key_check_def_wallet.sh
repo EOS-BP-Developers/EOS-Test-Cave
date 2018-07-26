@@ -34,7 +34,7 @@ fi
 
 
 if [[ "$CMD" == *"${KEY[1]}"* ]]; then
-    echo "1:$TEST_NAME"
+    echo "1:$TEST_NAME" && sleep 2
 else
     failed "Key not found in default wallet"
 fi

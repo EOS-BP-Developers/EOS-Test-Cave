@@ -29,7 +29,7 @@ if [[ $ERR != "" ]]; then
 else
     WALLET_PASS=$(echo $CMD | awk -F\" '{ print $2 }')
     echo $WALLET_PASS > $GLOBALPATH/log/wallet_default_password.dat
-    echo "1:$TEST_NAME"
+    echo "1:$TEST_NAME" && sleep 2
 
 
 fi

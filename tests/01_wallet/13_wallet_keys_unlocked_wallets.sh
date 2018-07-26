@@ -34,7 +34,7 @@ else
 
     if [[ "$CMD" == *"${DEFF_KEY[0]}"* && "$CMD" == *"${NAME_KEY[0]}"* ]]; then
 
-        echo "1:$TEST_NAME"
+        echo "1:$TEST_NAME" && sleep 2
     else
         failed "Not all keys in List.";
     fi

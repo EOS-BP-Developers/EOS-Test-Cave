@@ -26,4 +26,4 @@ for NAME in "${accounts[@]}"; do
     exit 1;
   fi
 done
-echo "1:$TEST_NAME"
+echo "1:$TEST_NAME" && sleep 2
