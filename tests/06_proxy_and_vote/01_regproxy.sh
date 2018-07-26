@@ -5,7 +5,7 @@ TEST_NAME="Register a proxy"
 NAME="$( jq -r '.test_account_name' "$config" )"
 
 #----------------------
-CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh system regproxy $NAME -p $NAME 2>$tpm_stderr)
+CMD=$( $GLOBALPATH/bin/cleos.sh system regproxy $NAME -p $NAME 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

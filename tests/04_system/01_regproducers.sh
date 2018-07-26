@@ -10,14 +10,14 @@ accounts=( testaccounta testaccountb testaccountc testaccountd testaccounte test
 
 for account in "${accounts[@]}"
 do
-  CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh system regproducer $account $SIGNING_KEY -p $account 2>$tpm_stderr)
+  CMD=$( $GLOBALPATH/bin/cleos.sh system regproducer $account $SIGNING_KEY -p $account 2>$tpm_stderr)
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != *"executed transaction"* ]]; then
     failed "$ERR"
     rm $tpm_stderr;
     exit 1;
   fi
-  CMD2=$( sleep 1 && $GLOBALPATH/bin/cleos.sh system listproducers | grep $account>$tpm_stderr)
+  CMD2=$( $GLOBALPATH/bin/cleos.sh system listproducers | grep $account>$tpm_stderr)
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != *"$account"* ]]; then
     failed "$ERR"

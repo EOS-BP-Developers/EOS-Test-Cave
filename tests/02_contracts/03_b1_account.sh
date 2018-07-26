@@ -4,7 +4,7 @@ TEST_NAME="Create B1 account"
 
 #----------------------
 PUB_KEY=$( cat $GLOBALPATH/log/wallet_default_key.dat | cut -d' ' -f1)
-CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh create account eosio b1 EOS5cujNHGMYZZ2tgByyNEUaoPLFhZVmGXbZc9BLJeQkKZFqGYEiQ 2>$tpm_stderr)
+CMD=$( $GLOBALPATH/bin/cleos.sh create account eosio b1 EOS5cujNHGMYZZ2tgByyNEUaoPLFhZVmGXbZc9BLJeQkKZFqGYEiQ 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

@@ -8,7 +8,7 @@ NAME="$( jq -r '.abp_account_name' "$config" )"
 
 #----------------------
 
-CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get account $NAME 2>$tpm_stderr)
+CMD=$( $GLOBALPATH/bin/cleos.sh get account $NAME 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

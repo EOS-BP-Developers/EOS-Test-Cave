@@ -13,8 +13,8 @@ proposer=${accounts[${#accounts[@]}-1]}
 
 for((x=1;x<16;x++)); do
   account=${accounts[$x]}
-  #CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh multisig review ${proposer} ${propose_name} 2> $tpm_stderr | jq -r .proposal_name )
-  CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh  multisig approve ${proposer} ${propose_name} '{"actor":"'$account'","permission":"active"}' -p $account@active 2> $tpm_stderr)
+  #CMD=$( $GLOBALPATH/bin/cleos.sh multisig review ${proposer} ${propose_name} 2> $tpm_stderr | jq -r .proposal_name )
+  CMD=$( $GLOBALPATH/bin/cleos.sh  multisig approve ${proposer} ${propose_name} '{"actor":"'$account'","permission":"active"}' -p $account@active 2> $tpm_stderr)
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != *"executed transaction"* ]]; then
     failed "$ERR"

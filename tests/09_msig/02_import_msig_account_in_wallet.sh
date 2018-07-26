@@ -9,8 +9,8 @@ PUB_KEY=$( cat $GLOBALPATH/log/wallet_name_testwallet_key.dat | cut -d' ' -f1)
 PRIV_KEY=$( cat $GLOBALPATH/log/wallet_name_testwallet_key.dat | cut -d' ' -f2)
 
 for NAME in "${accounts[@]}"; do
-  # Check Wallet
-  CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh wallet create -n $NAME 2> $tpm_stderr )
+  # Check Wallet 
+  CMD=$( $GLOBALPATH/bin/cleos.sh wallet create -n $NAME 2> $tpm_stderr )
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != "" ]]; then
       failed "$ERR"
@@ -21,7 +21,7 @@ for NAME in "${accounts[@]}"; do
       echo $WALLET_PASS > "$GLOBALPATH/log/wallet_name_"$NAME"_password.dat"
   fi
 
-  CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh wallet import -n $NAME --private-key $PRIV_KEY 2> $tpm_stderr )
+  CMD=$( $GLOBALPATH/bin/cleos.sh wallet import -n $NAME --private-key $PRIV_KEY 2> $tpm_stderr )
   ERR=$(cat $tpm_stderr)
   CHK_KEY=$(echo $CMD | awk '{print $5}')
   if [[ $ERR != "" ]]; then

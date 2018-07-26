@@ -10,7 +10,7 @@ accounts=( testaccounta testaccountb testaccountc testaccountd testaccounte test
 
 for account in "${accounts[@]}"
 do
-  CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get account $account 2>$tpm_stderr)
+  CMD=$( $GLOBALPATH/bin/cleos.sh get account $account 2>$tpm_stderr)
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != "" ]]; then
     failed "$ERR"

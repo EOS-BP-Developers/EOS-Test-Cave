@@ -18,7 +18,7 @@ for((x=1;x<=3;x++)); do
   fi
 done
 
-CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh multisig propose testmultisig "$(cat $msig_json)" '[{"actor": "'$NAME'", "permission": "active"}]' eosio.token transfer '{"from":"'$NAME'", "to":"'$CONFIRMER'", "quantity":"25.0000 EOS", "memo":"transfer test with multi signature confirm"}' -p ${CONFIRMER}@active 2> ${tpm_stderr} )
+CMD=$( $GLOBALPATH/bin/cleos.sh multisig propose testmultisig "$(cat $msig_json)" '[{"actor": "'$NAME'", "permission": "active"}]' eosio.token transfer '{"from":"'$NAME'", "to":"'$CONFIRMER'", "quantity":"25.0000 EOS", "memo":"transfer test with multi signature confirm"}' -p ${CONFIRMER}@active 2> ${tpm_stderr} )
 
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != *"executed transaction"* ]]; then

@@ -5,7 +5,7 @@ TEST_NAME="Set action permission for transfer"
 #----------------------
 NAME="testaccountb"
 PERMISSION_NAME="transfer"
-CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh set action permission $NAME eosio.token transfer $PERMISSION_NAME 2>$tpm_stderr)
+CMD=$( $GLOBALPATH/bin/cleos.sh set action permission $NAME eosio.token transfer $PERMISSION_NAME 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

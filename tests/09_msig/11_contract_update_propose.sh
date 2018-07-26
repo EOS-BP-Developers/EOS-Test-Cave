@@ -24,7 +24,7 @@ done
 # Make transaction json for push action
 echo '{"proposer":"testaccountv","proposal_name":"'$propose_name'","requested":'$(cat $msig_json)',"trx":'$(cat $GLOBALPATH/log/tmp_msig_data.json)'}' | jq . > $msig_trx
 
-CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh push action eosio.msig propose $msig_trx -p ${CONFIRMER}@active 2> ${tpm_stderr} )
+CMD=$( $GLOBALPATH/bin/cleos.sh push action eosio.msig propose $msig_trx -p ${CONFIRMER}@active 2> ${tpm_stderr} )
 
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != *"executed transaction"* ]]; then
