@@ -9,7 +9,7 @@ accounts=( testaccounta testaccountb testaccountc testaccountd testaccounte test
 for account in "${accounts[@]}"; do
   CMD2=$( $GLOBALPATH/bin/cleos.sh get currency balance eosio.token $account | sed 's/[^0-9]*//g'>$tpm_stderr_2)
   VAL_OLD=$(cat $tpm_stderr_2)
-  CMD=$( /bin/bash -x $GLOBALPATH/bin/cleos.sh transfer $NAME $account "150000.0000 EOS" "free tokens" -p $NAME)
+  CMD=$( $GLOBALPATH/bin/cleos.sh transfer $NAME $account "150000.0000 EOS" "free tokens" -p $NAME 2>$tpm_stderr)
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != *"executed transaction"* ]]; then
     failed "$ERR"
