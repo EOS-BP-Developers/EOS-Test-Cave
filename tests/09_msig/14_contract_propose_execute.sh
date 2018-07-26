@@ -10,9 +10,9 @@ propose_name="systemupdate"
 proposer=${accounts[${#accounts[@]}-1]}
 executer=${accounts[$RANDOM%21]}
 #----------------------
-cur_code_hash=$( $GLOBALPATH/bin/cleos.sh get code eosio  2> $tpm_stderr | awk '{print $3}' )
+cur_code_hash=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get code eosio  2> $tpm_stderr | awk '{print $3}' )
 
-CMD=$( $GLOBALPATH/bin/cleos.sh multisig exec $proposer $propose_name -p ${executer}@active 2> $tpm_stderr )
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh multisig exec $proposer $propose_name -p ${executer}@active 2> $tpm_stderr )
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != *"executed transaction"* ]]; then
   failed "$ERR"
@@ -21,7 +21,7 @@ if [[ $ERR != *"executed transaction"* ]]; then
 fi
 sleep 1;
 
-CMD=$( $GLOBALPATH/bin/cleos.sh get code eosio 2> $tpm_stderr | awk '{print $3}' )
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get code eosio 2> $tpm_stderr | awk '{print $3}' )
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != "" ]]; then
   failed "$ERR"

@@ -19,7 +19,7 @@ TEST_NAME="Create default wallet"
 
 #----------------------
 
-CMD=$( $GLOBALPATH/bin/cleos.sh wallet create 2>$tpm_stderr)
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh wallet create 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

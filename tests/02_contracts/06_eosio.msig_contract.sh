@@ -5,7 +5,7 @@ TEST_NAME="Deploy eosio.msig contract"
 #----------------------
 ACCOUNT="eosio.msig"
 
-CMD=$( $GLOBALPATH/bin/cleos.sh set contract $ACCOUNT $GLOBALPATH/contracts/eosio.msig 2>$tpm_stderr)
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh set contract $ACCOUNT $GLOBALPATH/contracts/eosio.msig 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 
@@ -14,7 +14,7 @@ if [[ $ERR != *"executed transaction"* ]]; then
     rm $tpm_stderr;
 fi
 
-CMD2=$( $GLOBALPATH/bin/cleos.sh get code $ACCOUNT 1>$tpm_stderr)
+CMD2=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get code $ACCOUNT 1>$tpm_stderr)
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != *"0000000000000000000000000000000000000000000000000000000000000000"* ]]; then
 	echo "1:$TEST_NAME"

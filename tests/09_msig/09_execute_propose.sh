@@ -9,7 +9,7 @@ NAME=${accounts[0]}
 proposer=${accounts[${#accounts[@]}-1]}
 executer=${accounts[1]}
 
-CMD=$( $GLOBALPATH/bin/cleos.sh multisig exec $proposer $NAME -p ${executer}@active 2> $tpm_stderr )
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh multisig exec $proposer $NAME -p ${executer}@active 2> $tpm_stderr )
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != *"executed transaction"* ]]; then
   failed "$ERR"
@@ -17,7 +17,7 @@ if [[ $ERR != *"executed transaction"* ]]; then
   exit 1;
 fi
 sleep 1;
-CMD=$( $GLOBALPATH/bin/cleos.sh get currency balance eosio.token msigconfirm3 EOS | awk '{print $1}' | sed "s/\.//g" 2> $tpm_stderr )
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get currency balance eosio.token msigconfirm3 EOS | awk '{print $1}' | sed "s/\.//g" 2> $tpm_stderr )
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != "" ]]; then
   failed "$ERR"

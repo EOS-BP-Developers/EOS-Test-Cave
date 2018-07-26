@@ -6,7 +6,7 @@ KEY="$( jq -r '.eosio_pub_key' "$config" )"
 
 #----------------------
 
-CMD=$( $GLOBALPATH/bin/cleos.sh push action eosio.token create '["eosio", "10000000000.0000 EOS"]' -p eosio.token 2>$tpm_stderr)
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh push action eosio.token create '["eosio", "10000000000.0000 EOS"]' -p eosio.token 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

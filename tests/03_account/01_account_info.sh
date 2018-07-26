@@ -19,7 +19,7 @@ TEST_NAME="Get account info"
 
 #----------------------
 
-CMD=$( $GLOBALPATH/bin/cleos.sh get account eosio 2>$tpm_stderr)
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get account eosio 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

@@ -10,7 +10,7 @@ accounts=( eosio.bpay eosio.msig eosio.names eosio.ram eosio.ramfee eosio.saving
 
 for account in "${accounts[@]}"
 do
-  CMD=$( $GLOBALPATH/bin/cleos.sh get account $account 2>$tpm_stderr)
+  CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get account $account 2>$tpm_stderr)
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != "" ]]; then
     failed "$ERR"

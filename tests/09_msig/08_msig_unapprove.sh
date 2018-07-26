@@ -10,7 +10,7 @@ NAME=${accounts[0]}
 proposer=${accounts[${#accounts[@]}-1]}
 unapprove=${accounts[2]}
 
-CMD=$( $GLOBALPATH/bin/cleos.sh multisig unapprove $proposer $NAME '{"actor":"'${unapprove}'","permission":"active"}' -p ${unapprove}@active 2> $tpm_stderr )
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh multisig unapprove $proposer $NAME '{"actor":"'${unapprove}'","permission":"active"}' -p ${unapprove}@active 2> $tpm_stderr )
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != *"executed transaction"* ]]; then
   failed "$ERR"

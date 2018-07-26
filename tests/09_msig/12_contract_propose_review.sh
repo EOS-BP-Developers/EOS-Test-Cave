@@ -10,7 +10,7 @@ propose_name="systemupdate"
 # get variable on end of accounts array
 proposer=${accounts[${#accounts[@]}-1]}
 
-CMD=$( $GLOBALPATH/bin/cleos.sh multisig review ${proposer} ${propose_name} 2> $tpm_stderr | jq -r .proposal_name )
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh multisig review ${proposer} ${propose_name} 2> $tpm_stderr | jq -r .proposal_name )
 ERR=$(cat $tpm_stderr)
 if [[ $CMD != "$propose_name" ]]; then
   failed "$ERR"

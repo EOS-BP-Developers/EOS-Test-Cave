@@ -7,16 +7,16 @@ TEST_NAME="Sell RAM"
 accounts=( testaccounta testaccountb testaccountc testaccountd testaccounte testaccountf testaccountg testaccounth testaccounti testaccountj testaccountk testaccountl testaccountm testaccountn testaccounto testaccountp testaccountq testaccountr testaccounts testaccountt testaccountu testaccountv );
 for account in "${accounts[@]}"
 do
-  CMD2=$( $GLOBALPATH/bin/cleos.sh get currency balance eosio.token $account | sed 's/[^0-9]*//g'>$tpm_stderr_2)
+  CMD2=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get currency balance eosio.token $account | sed 's/[^0-9]*//g'>$tpm_stderr_2)
   VAL_OLD=$(cat $tpm_stderr_2)
-  CMD=$( $GLOBALPATH/bin/cleos.sh system sellram $account 30000 -p $account 2>$tpm_stderr)
+  CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh system sellram $account 30000 -p $account 2>$tpm_stderr)
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != *"executed transaction"* ]]; then
     failed "$ERR"
     rm $tpm_stderr;
     exit 1;
   fi
-  CMD3=$( $GLOBALPATH/bin/cleos.sh get currency balance eosio.token $account | sed 's/[^0-9]*//g'>$tpm_stderr)
+  CMD3=$( sleep 1 && $GLOBALPATH/bin/cleos.sh get currency balance eosio.token $account | sed 's/[^0-9]*//g'>$tpm_stderr)
   VAL_NEW=$(cat $tpm_stderr)
   if [[ "$VAL_OLD" == "$VAL_NEW" ]]; then
     failed "Balance was not updated"

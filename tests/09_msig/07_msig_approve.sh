@@ -10,7 +10,7 @@ NAME=${accounts[0]}
 proposer=${accounts[${#accounts[@]}-1]}
 
 for((x=1;x<${#accounts[@]};x++)); do
-  CMD=$( $GLOBALPATH/bin/cleos.sh multisig approve $proposer $NAME '{"actor":"'${accounts[$x]}'","permission":"active"}' -p ${accounts[$x]}@active 2>$tpm_stderr )
+  CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh multisig approve $proposer $NAME '{"actor":"'${accounts[$x]}'","permission":"active"}' -p ${accounts[$x]}@active 2>$tpm_stderr )
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != *"executed transaction"* ]]; then
     failed "${accounts[$x]} - $ERR"

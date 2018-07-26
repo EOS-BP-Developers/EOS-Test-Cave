@@ -5,7 +5,7 @@ TEST_NAME="Setprods on eosio"
 KEY="$( jq -r '.eosio_pub_key' "$config" )"
 
 #----------------------
-CMD=$( $GLOBALPATH/bin/cleos.sh push action eosio setprods '{"schedule":[{"producer_name":"eosio","block_signing_key":"'$KEY'"}]}' -p eosio 2>$tpm_stderr)
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh push action eosio setprods '{"schedule":[{"producer_name":"eosio","block_signing_key":"'$KEY'"}]}' -p eosio 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

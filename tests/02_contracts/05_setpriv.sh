@@ -3,7 +3,7 @@ TEST_NAME="Set priv msig"
 . ../runner.sh
 
 #----------------------
-CMD=$( $GLOBALPATH/bin/cleos.sh push action eosio setpriv '["eosio.msig", 1]' -p eosio 2>$tpm_stderr)
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh push action eosio setpriv '["eosio.msig", 1]' -p eosio 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

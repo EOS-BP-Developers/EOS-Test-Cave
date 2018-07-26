@@ -20,7 +20,7 @@ for ((x=1;x<=3;x++)); do
 done
 echo '], "waits":[]}' >> $msig_json
 
-CMD=$( $GLOBALPATH/bin/cleos.sh set account permission ${NAME} owner "$(cat $msig_json)" -p ${NAME}@owner 2>${tpm_stderr})
+CMD=$( sleep 1 && $GLOBALPATH/bin/cleos.sh set account permission ${NAME} owner "$(cat $msig_json)" -p ${NAME}@owner 2>${tpm_stderr})
 
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != *"executed transaction"* ]]; then
