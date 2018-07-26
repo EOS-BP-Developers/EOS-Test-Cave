@@ -75,7 +75,7 @@ startCategoryTest(){
 
     cd $1
     for f in *.sh; do
-    print_test_result "$(./$f)"
+    print_test_result "$(/bin/bash -x $f)"
     done
     cd $mydir
 
