@@ -10,7 +10,7 @@ OTHER_NAME=testaccount1
   VAL_OLD=$(cat $tpm_stderr_2)
   CMD5=$( $GLOBALPATH/bin/cleos.sh get currency balance eosio.token $OTHER_NAME | sed 's/[^0-9]*//g'>$tpm_stderr_3)
   VAL_OLD_2=$(cat $tpm_stderr_3)
-  CMD=$( $GLOBALPATH/bin/cleos.sh system bidname $NAME jae '10000.0000 EOS' -p $NAME 2>$tpm_stderr)
+  CMD=$( $GLOBALPATH/bin/cleos.sh system bidname $NAME jae '10.0000 EOS' -p $NAME 2>$tpm_stderr)
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != *"executed transaction"* ]]; then
     failed "$ERR"
