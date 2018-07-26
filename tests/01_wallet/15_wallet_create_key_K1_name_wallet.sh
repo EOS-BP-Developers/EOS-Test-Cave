@@ -41,7 +41,7 @@ ERR=$(cat $tpm_stderr)
 
 if [[ "$CMD" == *"$PUB_KEY"* ]]; then
     echo "$PUB_KEY" >> $GLOBALPATH/log/wallet_create_key_name_k1.dat
-    echo "1:$TEST_NAME" && sleep 2
+    echo "1:$TEST_NAME"
 else
     failed "Key not found in $NAME wallet"
 fi

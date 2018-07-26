@@ -19,5 +19,5 @@ elif [[ $VALUE != "10000000000000" ]]; then
     failed "Wrong supply"
     rm $tpm_stderr;
 else
-    echo "1:$TEST_NAME" && sleep 2
+    echo "1:$TEST_NAME"
 fi

@@ -35,7 +35,7 @@ else
     #NAME_KEY=($(cat $GLOBALPATH/log/wallet_name_testwallet_key.dat))
 
     if [[ "$DATA" != *"${DEFF_KEY[0]}"* ]]; then
-        echo "1:$TEST_NAME" && sleep 2
+        echo "1:$TEST_NAME"
     else
         failed "Wallet wasn't locked";
     fi

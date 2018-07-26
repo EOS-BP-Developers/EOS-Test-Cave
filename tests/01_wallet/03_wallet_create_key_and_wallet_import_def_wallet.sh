@@ -34,7 +34,7 @@ else
 
     if [[ "${RES_PUB_KEY[4]}" == "$PUB_KEY" ]]; then
 	echo "$PUB_KEY $PRIV_KEY" >> $GLOBALPATH/log/wallet_default_key.dat
-	echo "1:$TEST_NAME" && sleep 2
+	echo "1:$TEST_NAME"
     else
 	failed "Created Pub Key ($PUB_KEY) != Imported (${RES_PUB_KEY[4]})"
     fi

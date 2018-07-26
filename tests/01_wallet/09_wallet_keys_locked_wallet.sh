@@ -28,7 +28,7 @@ ERR=$(cat $tpm_stderr)
 rm $tpm_stderr;
 
 if [[ "$ERR" == *"Locked wallet"* ]]; then
-    echo "1:$TEST_NAME" && sleep 2
+    echo "1:$TEST_NAME"
 else
     failed "Some keys still listed.";
 fi

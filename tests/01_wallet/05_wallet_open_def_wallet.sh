@@ -29,7 +29,7 @@ if [[ $ERR != "" ]]; then
 else
     DATA=($CMD)
     if [[ "${DATA[0]}" == "Opened:" && "${DATA[1]}" == "default" ]]; then
-        echo "1:$TEST_NAME" && sleep 2
+        echo "1:$TEST_NAME"
     else
         failed "Wallet do not opens";
     fi

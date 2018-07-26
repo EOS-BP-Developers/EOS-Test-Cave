@@ -15,7 +15,7 @@ fi
 CMD2=$( $GLOBALPATH/bin/cleos.sh get code eosio 1>$tpm_stderr)
 ERR=$(cat $tpm_stderr)
 if [[ $ERR != *"0000000000000000000000000000000000000000000000000000000000000000"* ]]; then
-	echo "1:$TEST_NAME" && sleep 2
+	echo "1:$TEST_NAME"
 else
     failed "$ERR"
     rm $tpm_stderr;

@@ -27,7 +27,7 @@ if [[ $ERR != "" ]]; then
     failed "$ERR"
     rm $tpm_stderr;
 else
-    echo "1:$TEST_NAME" && sleep 2
+    echo "1:$TEST_NAME"
 
 fi
 

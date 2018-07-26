@@ -45,4 +45,4 @@ OTHER_NAME=testaccount1
     exit 1;
   fi
 
-echo "1:$TEST_NAME" && sleep 2
+echo "1:$TEST_NAME"

@@ -24,5 +24,5 @@ VAL_NEW=$(cat $tpm_stderr)
     rm $tpm_stderr_2;
     exit 1;
   fi
-echo "1:$TEST_NAME" && sleep 2
+echo "1:$TEST_NAME"
 

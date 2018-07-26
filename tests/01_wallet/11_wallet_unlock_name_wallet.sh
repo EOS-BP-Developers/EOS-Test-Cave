@@ -35,7 +35,7 @@ if [[ $ERR != "" ]]; then
 else
     DATA=($CMD)
     if [[ "${DATA[0]}" == "Unlocked:" && "${DATA[1]}" == "$NAME" ]]; then
-        echo "1:$TEST_NAME" && sleep 2
+        echo "1:$TEST_NAME"
     else
         failed "Wallet name $NAME is not unlocked";
     fi
