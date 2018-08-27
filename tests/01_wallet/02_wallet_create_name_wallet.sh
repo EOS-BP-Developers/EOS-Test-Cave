@@ -1,10 +1,16 @@
 #!/bin/bash
 
-TEST_NAME="Create wallet with name $NAME"
 
 . ../runner.sh
 
-NAME="$( jq -r '.wallet_test_name' "$config" )"
+JQ=$(command -v jq)
+if ! [ -x "$JQ" ]; then
+  echo 'Error: jq is not installed.' >&2
+  exit 1
+fi
+NAME="$( $JQ -r '.wallet_test_name' "$config" )"
+TEST_NAME="Create wallet with name $NAME"
+
 
 #----------------------------------
 
