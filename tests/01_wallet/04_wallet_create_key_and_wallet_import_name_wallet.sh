@@ -7,7 +7,7 @@ TEST_NAME="Create EOS Key and import to wallet"
 NAME="$( jq -r '.wallet_test_name' "$config" )"
 
 #-------------------------------------------------------
-CMD1=($($GLOBALPATH/bin/cleos.sh create key))
+CMD1=($($GLOBALPATH/bin/cleos.sh create key --to-console))
 PRIV_KEY=${CMD1[2]}
 PUB_KEY=${CMD1[5]}
 
