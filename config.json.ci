@@ -6,6 +6,7 @@
  "node_data_dir_2": "/tmp/node-data-2",
  "node_bin": "/opt/eosio/bin/nodeos",
  "keosd_bin": "/opt/eosio/bin/keosd",
+ "cleos_bin": "/opt/eosio/bin/cleos",
  "wallet_test_name": "testwallet",
  "abp_account_name": "genesisblock",
  "test_account_name": "testaccount1",

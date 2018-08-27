@@ -6,6 +6,7 @@
  "node_data_dir_2": "./producing-nodes",
  "node_bin": "/usr/local/bin/nodeos",
  "keosd_bin": "/usr/local/bin/keosd",
+ "cleos_bin": "/usr/local/bin/cleos",
  "wallet_test_name": "testwallet",
  "abp_account_name": "genesisblock",
  "test_account_name": "testaccount1",

@@ -16,16 +16,11 @@ if ! [ -x "$JQ" ]; then
   echo 'Error: jq is not installed.' >&2
   exit 1
 fi
-CLEOS=$(command -v cleos)
-if ! [ -x "$CLEOS" ]; then
-  echo 'Error: cleos is not installed.' >&2
-  exit 1
-fi
 
 SCRIPTPATH=$(/usr/bin/dirname $( $REALPATH $0))""
 config="$SCRIPTPATH/../config.json"
 WALLETHOST="$( $JQ -r '.walletAddr' "$config" )"
 NODEHOST="$( $JQ -r '.nodeos' "$config" )"
-
+CLEOS="$( $JQ -r '.cleos_bin' "$config" )"
 
 $CLEOS -u http://$NODEHOST --wallet-url http://$WALLETHOST "$@"

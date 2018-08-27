@@ -1,25 +1,12 @@
 #!/bin/bash
-################################################################################
-#
-# EOS Testing cave
-#
-# Created by Bohdan Kossak
-# 2018 CryptoLions.io
-#
-# For automated testing EOS software
-#
-# Git Hub: https://github.com/CryptoLions
-# Eos Network Monitor: http://eosnetworkmonitor.io/
-#
-#
-###############################################################################
+
 TEST_NAME="Create default wallet"
 
 . ../runner.sh
 
 #----------------------
 
-CMD=$( $GLOBALPATH/bin/cleos.sh wallet create 2>$tpm_stderr)
+CMD=$( $GLOBALPATH/bin/cleos.sh wallet create --to-console 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 

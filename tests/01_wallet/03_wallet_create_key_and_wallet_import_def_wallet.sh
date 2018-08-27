@@ -1,28 +1,15 @@
 #!/bin/bash
-################################################################################
-#
-# EOS Testing cave
-#
-# Created by Bohdan Kossak
-# 2018 CryptoLions.io
-#
-# For automated testing EOS software
-#
-# Git Hub: https://github.com/CryptoLions
-# Eos Network Monitor: http://eosnetworkmonitor.io/
-#
-#
-###############################################################################
+
 TEST_NAME="Create and import EOS Key"
 
 . ../runner.sh
 
 #--------------------------------------------------
 CMD1=($($GLOBALPATH/bin/cleos.sh create key))
-PRIV_KEY=${CMD1[2]}
+PRIV_KEY=${CMD1[2]} 
 PUB_KEY=${CMD1[5]}
 
-CMD=$($GLOBALPATH/bin/cleos.sh wallet import $PRIV_KEY 2>$tpm_stderr)
+CMD=$($GLOBALPATH/bin/cleos.sh wallet import --private-key $PRIV_KEY 2>$tpm_stderr)
 
 ERR=$(cat $tpm_stderr)
 
@@ -39,7 +26,3 @@ else
 	failed "Created Pub Key ($PUB_KEY) != Imported (${RES_PUB_KEY[4]})"
     fi
 fi
-
-
-
-
