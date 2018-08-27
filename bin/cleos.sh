@@ -10,10 +10,22 @@
 #
 ###############################################################################
 
-SCRIPTPATH=$(/usr/bin/dirname $(realpath $0))""
+REALPATH=$( command -v realpath || command -v grealpath )
+JQ=$(command -v jq)
+if ! [ -x "$JQ" ]; then
+  echo 'Error: jq is not installed.' >&2
+  exit 1
+fi
+CLEOS=$(command -v cleos)
+if ! [ -x "$CLEOS" ]; then
+  echo 'Error: cleos is not installed.' >&2
+  exit 1
+fi
+
+SCRIPTPATH=$(/usr/bin/dirname $( $REALPATH $0))""
 config="$SCRIPTPATH/../config.json"
-WALLETHOST="$( /usr/bin/jq -r '.walletAddr' "$config" )"
-NODEHOST="$( /usr/bin/jq -r '.nodeos' "$config" )"
+WALLETHOST="$( $JQ -r '.walletAddr' "$config" )"
+NODEHOST="$( $JQ -r '.nodeos' "$config" )"
 
 
-$SCRIPTPATH/bin/cleos -u http://$NODEHOST --wallet-url http://$WALLETHOST "$@"
+$CLEOS -u http://$NODEHOST --wallet-url http://$WALLETHOST "$@"

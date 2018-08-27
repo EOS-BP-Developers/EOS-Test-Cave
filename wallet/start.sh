@@ -1,10 +1,22 @@
 #!/bin/bash
 
-GLOBALPATH=$(/usr/bin/dirname $(/usr/bin/realpath $0))
+REALPATH=$( command -v realpath || command -v grealpath )
+JQ=$(command -v jq)
+if ! [ -x "$JQ" ]; then
+  echo 'Error: jq is not installed.' >&2
+  exit 1
+fi
+CLEOS=$(command -v cleos)
+if ! [ -x "$CLEOS" ]; then
+  echo 'Error: cleos is not installed.' >&2
+  exit 1
+fi
+
+GLOBALPATH=$(/usr/bin/dirname $( $REALPATH $0 ))
 config="$GLOBALPATH/../config.json"
-DIR="$( /usr/bin/jq -r '.wallet_data_dir' "$config" )"
-KEOSDBINDIR="$( /usr/bin/jq -r '.keosd_bin' "$config" )"
-WALLET_ADDRESS="$( /usr/bin/jq -r '.walletAddr' "$config" )"
+DIR="$( $JQ -r '.wallet_data_dir' "$config" )"
+KEOSDBINDIR="$( $JQ -r '.keosd_bin' "$config" )"
+WALLET_ADDRESS="$( $JQ -r '.walletAddr' "$config" )"
 
 /bin/echo "Starting Keosd";
 
