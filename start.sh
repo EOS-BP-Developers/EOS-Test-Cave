@@ -11,7 +11,8 @@ if [ ! -f $config ]; then
     exit 1
 fi
 
-if ! [ -x "$(command -v jq)" ]; then
+JQ=$(command -v jq)
+if ! [ -x "$JQ" ]; then
   echo 'Error: jq is not installed.' >&2
   exit 1
 fi
@@ -21,8 +22,8 @@ if ! [ -x "$(command -v bc)" ]; then
   exit 1
 fi
 
-NODE_DIR="$( /usr/bin/jq -r '.node_data_dir' "$config" )"
-WALLET_DIR="$( /usr/bin/jq -r '.wallet_data_dir' "$config" )"
+NODE_DIR="$( $JQ -r '.node_data_dir' "$config" )"
+WALLET_DIR="$( $JQ -r '.wallet_data_dir' "$config" )"
 
 if [[ -z "$NODE_DIR" || -z "$WALLET_DIR" ]]; then
     echo "Invalid directory locations for nodeos and wallet"

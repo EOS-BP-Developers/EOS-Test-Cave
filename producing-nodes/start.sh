@@ -10,11 +10,18 @@
 ##                                                   ##
 #######################################################
 
-GLOBALPATH=$(/usr/bin/dirname $(/usr/bin/realpath $0))
+REALPATH=$( command -v realpath || command -v grealpath )
+JQ=$(command -v jq)
+if ! [ -x "$JQ" ]; then
+  echo 'Error: jq is not installed.' >&2
+  exit 1
+fi
+
+GLOBALPATH=$(/usr/bin/dirname $($REALPATH $0))
 config="$GLOBALPATH/../config.json"
 
-DATADIR="$( /usr/bin/jq -r '.node_data_dir_2' "$config" )"
-NODEOS="$( /usr/bin/jq -r '.node_bin' "$config" )"
+DATADIR="$( $JQ -r '.node_data_dir_2' "$config" )"
+NODEOS="$( $JQ -r '.node_bin' "$config" )"
 
 /bin/echo "Starting Nodeos";
 
