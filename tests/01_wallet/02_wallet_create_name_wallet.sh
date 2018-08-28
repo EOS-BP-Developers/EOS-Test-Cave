@@ -1,10 +1,12 @@
 #!/bin/bash
 
-TEST_NAME="Create wallet with name $NAME"
 
 . ../runner.sh
 
-NAME="$( jq -r '.wallet_test_name' "$config" )"
+JQ=$(command -v jq)
+NAME="$( $JQ -r '.wallet_test_name' "$config" )"
+TEST_NAME="Create wallet with name $NAME"
+
 
 #----------------------------------
 

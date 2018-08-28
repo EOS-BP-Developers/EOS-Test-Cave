@@ -5,7 +5,7 @@ TEST_NAME="Create and import EOS Key"
 . ../runner.sh
 
 #--------------------------------------------------
-CMD1=($($GLOBALPATH/bin/cleos.sh create key))
+CMD1=($($GLOBALPATH/bin/cleos.sh create key --to-console))
 PRIV_KEY=${CMD1[2]} 
 PUB_KEY=${CMD1[5]}
 
