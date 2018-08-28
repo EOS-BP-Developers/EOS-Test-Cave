@@ -2,7 +2,11 @@ TEST_NAME="Create tokens"
 
 . ../runner.sh
 
-KEY="$( jq -r '.eosio_pub_key' "$config" )"
+JQ=$(command -v jq)
+GREP=$( command -v grep )
+SED=$( command -v sed )
+
+KEY="$( $JQ -r '.eosio_pub_key' "$config" )"
 
 #----------------------
 
@@ -10,7 +14,7 @@ CMD=$( $GLOBALPATH/bin/cleos.sh push action eosio.token create '["eosio", "10000
 
 ERR=$(cat $tpm_stderr)
 
-VALUE="$($GLOBALPATH/bin/cleos.sh get currency stats eosio.token EOS | /bin/grep max_supply | /bin/sed 's/[^0-9]*//g')"
+VALUE="$($GLOBALPATH/bin/cleos.sh get currency stats eosio.token EOS | $GREP max_supply | $SED 's/[^0-9]*//g')"
 
 if [[ $ERR != *"executed transaction"* ]]; then
     failed "$ERR"
