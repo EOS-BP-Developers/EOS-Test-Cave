@@ -6,7 +6,9 @@ if ! [ -x "$JQ" ]; then
   echo 'Error: jq is not installed.' >&2
   exit 1
 fi
-CLEOS=$(command -v cleos)
+SCRIPTPATH=$(/usr/bin/dirname $( $REALPATH $0))""
+config="$SCRIPTPATH/../config.json"
+CLEOS="$( $JQ -r '.cleos_bin' "$config" )"
 if ! [ -x "$CLEOS" ]; then
   echo 'Error: cleos is not installed.' >&2
   exit 1
