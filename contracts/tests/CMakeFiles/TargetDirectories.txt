@@ -1,0 +1,4 @@
+/home/ubuntu/eosio.contracts/build/tests/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/eosio.contracts/build/tests/CMakeFiles/edit_cache.dir
+/home/ubuntu/eosio.contracts/build/tests/CMakeFiles/unit_test.dir
+/home/ubuntu/eosio.contracts/build/tests/CMakeFiles/test.dir

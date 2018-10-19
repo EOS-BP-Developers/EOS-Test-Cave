@@ -1,0 +1,1 @@
+cmd='/usr/bin/cmake;-DCMAKE_BUILD_TYPE=;-DEOSIO_ROOT=/usr/local/eosio;-DEOSIO_DEPENDENCY=1.1;-GUnix Makefiles;<SOURCE_DIR><SOURCE_SUBDIR>'

@@ -1,0 +1,14 @@
+# Target labels
+ contracts_unit_tests
+# Source files and their labels
+/home/ubuntu/eosio.contracts/build/CMakeFiles/contracts_unit_tests
+/home/ubuntu/eosio.contracts/build/CMakeFiles/contracts_unit_tests.rule
+/home/ubuntu/eosio.contracts/build/CMakeFiles/contracts_unit_tests-complete.rule
+/home/ubuntu/eosio.contracts/build/contracts_unit_tests-prefix/src/contracts_unit_tests-stamp/contracts_unit_tests-install.rule
+/home/ubuntu/eosio.contracts/build/contracts_unit_tests-prefix/src/contracts_unit_tests-stamp/contracts_unit_tests-mkdir.rule
+/home/ubuntu/eosio.contracts/build/contracts_unit_tests-prefix/src/contracts_unit_tests-stamp/contracts_unit_tests-download.rule
+/home/ubuntu/eosio.contracts/build/contracts_unit_tests-prefix/src/contracts_unit_tests-stamp/contracts_unit_tests-update.rule
+/home/ubuntu/eosio.contracts/build/contracts_unit_tests-prefix/src/contracts_unit_tests-stamp/contracts_unit_tests-patch.rule
+/home/ubuntu/eosio.contracts/build/contracts_unit_tests-prefix/src/contracts_unit_tests-stamp/contracts_unit_tests-configure.rule
+/home/ubuntu/eosio.contracts/build/contracts_unit_tests-prefix/src/contracts_unit_tests-stamp/contracts_unit_tests-build.rule
+/home/ubuntu/eosio.contracts/build/contracts_unit_tests-prefix/src/contracts_unit_tests-stamp/contracts_unit_tests-test.rule

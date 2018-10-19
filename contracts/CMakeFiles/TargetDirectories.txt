@@ -1,0 +1,15 @@
+/home/ubuntu/eosio.contracts/build/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/eosio.contracts/build/CMakeFiles/contracts_unit_tests.dir
+/home/ubuntu/eosio.contracts/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/eosio.contracts/build/eosio.msig/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/eosio.contracts/build/eosio.msig/CMakeFiles/eosio.msig.wasm.dir
+/home/ubuntu/eosio.contracts/build/eosio.msig/CMakeFiles/edit_cache.dir
+/home/ubuntu/eosio.contracts/build/eosio.sudo/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/eosio.contracts/build/eosio.sudo/CMakeFiles/eosio.sudo.wasm.dir
+/home/ubuntu/eosio.contracts/build/eosio.sudo/CMakeFiles/edit_cache.dir
+/home/ubuntu/eosio.contracts/build/eosio.system/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/eosio.contracts/build/eosio.system/CMakeFiles/eosio.system.wasm.dir
+/home/ubuntu/eosio.contracts/build/eosio.system/CMakeFiles/edit_cache.dir
+/home/ubuntu/eosio.contracts/build/eosio.token/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/eosio.contracts/build/eosio.token/CMakeFiles/eosio.token.wasm.dir
+/home/ubuntu/eosio.contracts/build/eosio.token/CMakeFiles/edit_cache.dir

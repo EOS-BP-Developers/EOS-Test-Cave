@@ -1,0 +1,6 @@
+{
+    "threshold" : 1,
+    "keys" : [],
+    "accounts": [{"permission":{"actor":"dacauthority", "permission":"active"}, "weight":1}],
+    "waits": []
+}

@@ -11,7 +11,8 @@ if [ ! -f $config ]; then
     exit 1
 fi
 
-if ! [ -x "$(command -v jq)" ]; then
+JQ=$(command -v jq)
+if ! [ -x "$JQ" ]; then
   echo 'Error: jq is not installed.' >&2
   exit 1
 fi
@@ -21,8 +22,8 @@ if ! [ -x "$(command -v bc)" ]; then
   exit 1
 fi
 
-NODE_DIR="$( /usr/bin/jq -r '.node_data_dir' "$config" )"
-WALLET_DIR="$( /usr/bin/jq -r '.wallet_data_dir' "$config" )"
+NODE_DIR="$( $JQ -r '.node_data_dir' "$config" )"
+WALLET_DIR="$( $JQ -r '.wallet_data_dir' "$config" )"
 
 if [[ -z "$NODE_DIR" || -z "$WALLET_DIR" ]]; then
     echo "Invalid directory locations for nodeos and wallet"
@@ -45,17 +46,17 @@ $GLOBALPATH/producing-nodes/start.sh --delete-all-blocks --genesis-json $GLOBALP
 
 print_test_result() {
     T_=$1
-    T1=$(/bin/echo $T_ | /usr/bin/cut -d ":" -f 1)
-    T2=$(/bin/echo $T_ | /usr/bin/cut -d ":" -f 2)
+    T1=$(echo $T_ | /usr/bin/cut -d ":" -f 1)
+    T2=$(echo $T_ | /usr/bin/cut -d ":" -f 2)
     if [[ $T1 -eq 1 ]]; then
     #echo -e "$T2 - \e[32m[OK]\e[39m" | column -t -s-
 
-    /usr/bin/printf '\e[1;39m%-75s\e[m \e[1;32m%-25s\e[m\n' " $T2" "[OK]"
+    /usr/bin/printf '\033[1;39m%-75s\033[m \033[1;32m%-25s\033[m\n' " $T2" "[OK]"
     TEST_OK_WALLET=$(($TEST_OK_WALLET+1))
     TEST_OK=$(($TEST_OK+1))
     else
-    #echo -e "$T2 \t \e[31m[FAILED]\e[39m"
-    /usr/bin/printf '\e[1;39m%-75s\e[m \e[1;31m%-25s\e[m\n' " $T2" "[FAILED]"
+    #echo -e "$T2 \t \033[31m[FAILED]\e[39m"
+    /usr/bin/printf '\033[1;39m%-75s\033[m \033[1;31m%-25s\033[m\n' " $T2" "[FAILED]"
     TEST_FAILED_WALLET=$(($TEST_FAILED_WALLET+1))
     TEST_FAILED=$(($TEST_FAILED+1))
     fi
@@ -66,7 +67,7 @@ startCategoryTest(){
     DIR=$1;
 
     /bin/echo "";
-    /bin/echo -e "\e[1;39m╔════════════════════╣ \e[1;32m Tests $1 \e[m ╠═══════════════════════════════╗\e[m \n";
+    echo -e "\033[1;39m╔════════════════════╣ \033[1;32m Tests $1 \033[m ╠═══════════════════════════════╗\033[m \n";
 
     mydir=$(/bin/pwd)
     STARTTIME_GROUP=$(/bin/date +%s.%N)
@@ -82,13 +83,13 @@ startCategoryTest(){
     ENDTIME_GROUP=$(/bin/date +%s.%N)
     DIFF_GROUP=$(/bin/echo "$ENDTIME_GROUP - $STARTTIME_GROUP" | /usr/bin/bc)
 
-    /bin/echo ""
-    /bin/echo -e "\e[1;39m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\e[m"
-    /bin/echo " Tests: $1"
-    /bin/echo " Time: $DIFF_GROUP sec"
-    /bin/echo -e " Group Total \e[32mOK\e[39m/\e[31mFailed\e[39m/\e[1;39mTotal\e[m tests: \e[32m$TEST_OK_WALLET\e[m/\e[31m$TEST_FAILED_WALLET\e[m/\e[1;39m"$((TEST_OK_WALLET+TEST_FAILED_WALLET))"\e[m"
+    echo ""
+    echo -e "\033[1;39m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\033[m"
+    echo " Tests: $1"
+    echo " Time: $DIFF_GROUP sec"
+    echo -e " Group Total \033[32mOK\033[39m/\033[31mFailed\033[39m/\033[1;39mTotal\033[m tests: \033[32m$TEST_OK_WALLET\033[m/\033[31m$TEST_FAILED_WALLET\033[m/\033[1;39m"$((TEST_OK_WALLET+TEST_FAILED_WALLET))"\033[m"
 
-    /bin/echo -e "\e[1;39m╚══════════════════════════════════════════════════════════════════════════════╝\e[m \n";
+    echo -e "\033[1;39m╚══════════════════════════════════════════════════════════════════════════════╝\033[m \n";
 }
 
 
@@ -110,13 +111,15 @@ startCategoryTest "tests/05_transfers"
 startCategoryTest "tests/06_proxy_and_vote"
 startCategoryTest "tests/07_name_bids"
 startCategoryTest "tests/08_permissions"
+#startCategoryTest "tests/09_msig"
+startCategoryTest "tests/12_eosdac"
 
-if [ "$1" != "ci" ]; then
-    startCategoryTest "tests/09_msig"
-    startCategoryTest "tests/11_get_requests"
-    sleep 126;
-    startCategoryTest "tests/10_claimrewards"
-fi
+#if [ "$1" != "ci" ]; then
+#    startCategoryTest "tests/09_msig"
+#    startCategoryTest "tests/11_get_requests"
+#    sleep 126;
+#    startCategoryTest "tests/10_claimrewards"
+#fi
 
 #########################################################################################################################
 #########################################################################################################################

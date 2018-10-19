@@ -6,7 +6,7 @@ KEY="$( jq -r '.eosio_pub_key' "$config" )"
 
 #----------------------
 
-accounts=( eosio.bpay eosio.msig eosio.names eosio.ram eosio.ramfee eosio.saving eosio.stake eosio.token eosio.vpay );
+accounts=( eosio.bpay eosio.msig eosio.names eosio.ram eosio.ramfee eosio.saving eosio.stake eosio.token eosio.vpay);
 
 for account in "${accounts[@]}"
 do

@@ -1,0 +1,1 @@
+/usr/bin/clang++-4.0   -Wall -Wno-invalid-partial-specialization -O3 -DNDEBUG   CMakeFiles/eosio.system.tmp.dir/eosio.system.cpp.o  -o eosio.system.tmp 

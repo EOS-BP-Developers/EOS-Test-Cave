@@ -1,0 +1,8 @@
+{
+    "threshold": 1,
+    "keys": [],
+    "accounts": [
+        {"permission":{"actor":"daccustodian", "permission":"eosio.code"}, "weight":1}
+    ],
+    "waits": []
+}

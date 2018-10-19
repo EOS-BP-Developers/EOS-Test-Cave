@@ -10,7 +10,7 @@ PRIV_KEY=$( cat $GLOBALPATH/log/wallet_name_testwallet_key.dat | cut -d' ' -f2)
 
 for NAME in "${accounts[@]}"; do
   # Check Wallet 
-  CMD=$( $GLOBALPATH/bin/cleos.sh wallet create -n $NAME 2> $tpm_stderr )
+  CMD=$( $GLOBALPATH/bin/cleos.sh wallet create -n $NAME --to-console 2> $tpm_stderr )
   ERR=$(cat $tpm_stderr)
   if [[ $ERR != "" ]]; then
       failed "$ERR"

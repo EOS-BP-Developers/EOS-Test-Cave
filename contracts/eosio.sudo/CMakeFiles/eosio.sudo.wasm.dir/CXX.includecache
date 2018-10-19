@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../eosio.sudo/include/eosio.sudo/eosio.sudo.hpp
+eosiolib/eosio.hpp
+-
+
+/home/ubuntu/eosio.contracts/eosio.sudo/src/eosio.sudo.cpp
+eosio.sudo/eosio.sudo.hpp
+-
+eosiolib/transaction.hpp
+-
+
