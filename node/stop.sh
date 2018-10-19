@@ -10,9 +10,16 @@
 ##                                                   ##
 #######################################################
 
-GLOBALPATH=$(/usr/bin/dirname $(/usr/bin/realpath $0))
+REALPATH=$( command -v realpath || command -v grealpath )
+JQ=$(command -v jq)
+if ! [ -x "$JQ" ]; then
+  echo 'Error: jq is not installed.' >&2
+  exit 1
+fi
+
+GLOBALPATH=$(/usr/bin/dirname $($REALPATH $0))
 config="$GLOBALPATH/../config.json"
-DIR="$( /usr/bin/jq -r '.node_data_dir' "$config" )"
+DIR="$( $JQ -r '.node_data_dir' "$config" )"
 
     if [ -f $DIR"/nodeos.pid" ]; then
         pid=$(/bin/cat $DIR"/nodeos.pid")
